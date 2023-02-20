@@ -23,16 +23,14 @@ func main() {
 
 // we cannot change the const  decalred variable
 // type declaration is used to increase the readability in the long run
-
 // we can declare the type as
 var apple int8 // this we do as to make our code more compatible to different machines
 // as the int value depends on machine so to use the code in the different machine we declare the int size before hand in go
 
 // scope
-
 func func1() *int { // here we will have to declar ethe type of the return typep otherwise we will get the error
-	var a int = 5 // short variable declaration
-	return &a     // this is pointer concept like C    // the return type is pointer
+	var a int = 80 // short variable declaration
+	return &a      // this is pointer concept like C    // the return type is pointer
 } // here (*int) is the pointer [ return type]
 // here we will get th eerro in case of keeping the unused variable
 
@@ -40,10 +38,14 @@ func func1() *int { // here we will have to declar ethe type of the return typep
 // if we cd into .. then we go to previous directory
 // if we cd in . then we go into the current directory
 
-// IMPORTANT CMD
+// IMPORTANT CMD FOR GIT
 // git init   -- initializing the git repository
 // git clone repository_name -- we get existing reporitory
 // git status -- to see which files are merged etc we use this
 // git add hello.go go.mod
 // git commit -- it will ask for the our email and password to show our identity
 // git config --global ==== for seperation we can use it
+// git log  -- to get the changes wi e have made up till now in that file on the git
+
+// TO check the changes made by the user in git
+// git diff
