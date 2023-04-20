@@ -1,6 +1,18 @@
 # Todo_app
 Todo_app: Created basic CRUD operations on local file system using NodeJs
 
+To run the app:
+
+Imp installs:
+* npm
+* express
+
+Execution cmds:
+* To run app through nodemon: npm run start
+* to execute simply: node app.js
+
+
+
 API-1: Gets all the tasks from data.json file and the length of the data is given on the top
 
 ![Screenshot 2023-04-20 at 6 36 21 PM](https://user-images.githubusercontent.com/125876024/233376075-0cb27137-6933-4386-9d4a-0ea0837f8372.png)
