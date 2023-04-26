@@ -6,7 +6,7 @@ const fs = require("fs");
 const app = express();
 // creating the middleware [ if we will rmeove this middleware and the we will get undefined in the console]
 app.use(express.json());            // express.json is the middleware
-
+console.log('task')
 
 //reading the data form the file
 const tasks = JSON.parse(
@@ -53,8 +53,10 @@ app.get('/api/v1/tasks/:id', (req, res) =>{
 app.post('/api/v1/tasks', (req, res) => {
     // to automatically increment the ids for new tasks  
     const newId = tasks[tasks.length-1].id + 1;
-    const newTask = Object.assign({id: newId}, req.body);
+    const newTask = Object.assign({id: newId,...req.body, task_status:'ongoing'});
+
     tasks.push(newTask);
+    
     // now we will use the asyc as we are in the call back and we dont wanna block it 
     fs.writeFile(`${__dirname}/dev-data/data/tasks-simple.json`, JSON.stringify(tasks, null, 2), err => {
         res.status(201).json({
@@ -95,16 +97,17 @@ app.patch('/api/v1/tasks/:id', (req, res) => {
 
 // Deleting the tasks from the file 
 app.delete('/api/v1/tasks/:id', (req, res) => {
-
     // to check the validity of the id 
-    if(req.params.id * 1 > tasks.length) {
+    let id = req.params.id * 1;
+    let a = Boolean(tasks.find(item => item.id == id));
+    if (!a) {
         return res.status(404).json({
             status: 'fail',
-            message: 'Invalid ID'
-        })
+            message: 'Invalid Id'
+        });
     }
     // logic to delete -- array funtion filter
-    let id = req.params.id;
+    id = req.params.id;
     let newTasks = tasks.filter(el => el.id != id)
     
     // chnaging async wont work????
